@@ -40,7 +40,22 @@ session_start();
         
         
         <?php
-            $bdd= new PDO("mysql:host=localhost;dbname=teamproject", 'etiennedivet', '');
+            $connUrl = "mysql://rbxpsues54ht50d6:xg7fqnn4docaxmqd@olxl65dqfuqr6s4y.cbetxkdyhwsb.us-east-1.rds.amazonaws.com:3306/lc1ny2gy52780f2x";
+            $hasConnUrl = !empty($connUrl);
+            
+            $connParts = null;
+            if ($hasConnUrl) {
+                $connParts = parse_url($connUrl);
+            }
+            
+            //var_dump($hasConnUrl);
+            $host = $hasConnUrl ? $connParts['host'] : getenv('IP');
+            $dbname = $hasConnUrl ? ltrim($connParts['path'],'/') : 'lab4';
+            $username = $hasConnUrl ? $connParts['user'] : getenv('C9_USER');
+            $password = $hasConnUrl ? $connParts['pass'] : '';
+            
+            $bdd= new PDO("mysql:host=$host;dbname=$dbname", $username, $password);
+            /*$bdd= new PDO("mysql:host=localhost;dbname=teamproject", 'etiennedivet', '');*/
             
             
             if ($_GET['filter']=='track')
