@@ -32,6 +32,10 @@ session_start();
                     <option value="">Select a music genre</option>
                     <option value="pop">Pop</option>
                     <option value="rap">Rap</option>
+                    <option value="Hip-hop">Hip-Hop</option>
+                    <option value="house">House</option>
+                    <option value="Electro">Electro</option>
+                    <option value="rock">Rock</option>
                 </select><br><br>
                 <input type="submit", value="search"><br><hr>
                 </form> 
@@ -40,7 +44,7 @@ session_start();
         
         
         <?php
-            $connUrl = "mysql://rbxpsues54ht50d6:xg7fqnn4docaxmqd@olxl65dqfuqr6s4y.cbetxkdyhwsb.us-east-1.rds.amazonaws.com:3306/lc1ny2gy52780f2x";
+            /*$connUrl = "mysql://rbxpsues54ht50d6:xg7fqnn4docaxmqd@olxl65dqfuqr6s4y.cbetxkdyhwsb.us-east-1.rds.amazonaws.com:3306/lc1ny2gy52780f2x";
             $hasConnUrl = !empty($connUrl);
             
             $connParts = null;
@@ -54,8 +58,8 @@ session_start();
             $username = $hasConnUrl ? $connParts['user'] : getenv('C9_USER');
             $password = $hasConnUrl ? $connParts['pass'] : '';
             
-            $bdd= new PDO("mysql:host=$host;dbname=$dbname", $username, $password);
-            /*$bdd= new PDO("mysql:host=localhost;dbname=teamproject", 'etiennedivet', '');*/
+            $bdd= new PDO("mysql:host=$host;dbname=$dbname", $username, $password);*/
+            $bdd= new PDO("mysql:host=localhost;dbname=teamproject", 'etiennedivet', '');
             
             
             if ($_GET['filter']=='track')
@@ -77,7 +81,7 @@ session_start();
 
             }
             	
-        
+            $num=0;
             while ($donnees = $reponse->fetch())
             {
             ?>
@@ -87,15 +91,14 @@ session_start();
                 </div>
                     
                 <div id="b">
-                    <div class="popup" onclick="myFunction()"><?php echo $donnees['track_name'];?>
-                        <span class="popuptext" id="myPopup"><?php echo $donnees['album_name'];?></span>
-                    </div>
+                    <?php echo $donnees['track_name'];?>
                 </div>
                 <div id="c">
-                    <?php echo $donnees['artist_name'] . "<br>";?>
+                    <?php echo $donnees['artist_name'];?>
                 </div>
                 <div id="d">
-                    <button onclick="addtocart()"><img id="plus" src="plus.jpg" alt="plus" ></button>
+                    <button onclick="addtocart(<?php echo $donnees['track_id'];?>)"><img id="<?php echo $donnees['track_id'];?>" src="plus.jpg" alt="plus" style="width:15px;height:15px;margin-top: 10px;text-align: center;" ></button>
+                    <?php $num++;?>
                     <p>Add to shopping cart</p>
                     
 
@@ -111,15 +114,16 @@ session_start();
     </body>
 </html>
 <script>
-    function addtocart(){
-        document.getElementById("plus").src = "check.png";
+    function addtocart(a){
+
+        document.getElementById(a).src = "check.png";
        
     }
                             
 </script>
 
 <script>
-// When the user clicks on div, open the popup
+
 function myFunction() {
     var popup = document.getElementById("myPopup");
     popup.classList.toggle("show");
