@@ -81,7 +81,7 @@ session_start();
 
             }
             	
-            $num=0;
+            
             while ($donnees = $reponse->fetch())
             {
             ?>
@@ -98,7 +98,7 @@ session_start();
                 </div>
                 <div id="d">
                     <button onclick="addtocart(<?php echo $donnees['track_id'];?>)"><img id="<?php echo $donnees['track_id'];?>" src="plus.jpg" alt="plus" style="width:15px;height:15px;margin-top: 10px;text-align: center;" ></button>
-                    <?php $num++;?>
+                    
                     <p>Add to shopping cart</p>
                     
 
