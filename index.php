@@ -12,7 +12,7 @@ session_start();
     <body>
         <div id="main">
           <h1>Music Database</h1>
-          <p>The database can be filtered by track name, artist name or music genre</p>
+          <p>The database can be filtered by track name, artist name or music genre ( <a href="https://trello.com/b/EtT0j4rA">Trello  </a> ,<a href="https://docs.google.com/document/d/155yEPAOvuCABwW8H3ND91WITuWXquq2NmAN5bTGTp3o/edit?usp=sharing">Google Doc )</a></p>
           <a href="shopping.php">
             <img id="cart" alt="cart" src="cart.jpg" >
           </a>
