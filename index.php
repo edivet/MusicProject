@@ -44,7 +44,7 @@ session_start();
         
         
         <?php
-            /*$connUrl = "mysql://rbxpsues54ht50d6:xg7fqnn4docaxmqd@olxl65dqfuqr6s4y.cbetxkdyhwsb.us-east-1.rds.amazonaws.com:3306/lc1ny2gy52780f2x";
+            $connUrl = "mysql://rbxpsues54ht50d6:xg7fqnn4docaxmqd@olxl65dqfuqr6s4y.cbetxkdyhwsb.us-east-1.rds.amazonaws.com:3306/lc1ny2gy52780f2x";
             $hasConnUrl = !empty($connUrl);
             
             $connParts = null;
@@ -58,8 +58,8 @@ session_start();
             $username = $hasConnUrl ? $connParts['user'] : getenv('C9_USER');
             $password = $hasConnUrl ? $connParts['pass'] : '';
             
-            $bdd= new PDO("mysql:host=$host;dbname=$dbname", $username, $password);*/
-            $bdd= new PDO("mysql:host=localhost;dbname=teamproject", 'etiennedivet', '');
+            $bdd= new PDO("mysql:host=$host;dbname=$dbname", $username, $password);
+            /*$bdd= new PDO("mysql:host=localhost;dbname=teamproject", 'etiennedivet', '');*/
             
             
             if ($_GET['filter']=='track')
